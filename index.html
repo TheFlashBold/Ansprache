@@ -18,6 +18,8 @@
                 $scope.queue = -1;
                 $scope.text = [];
 
+                $scope.inputValid = false;
+
                 $scope.send = function () {
                     if($scope.input){
                         write();
@@ -31,7 +33,7 @@
                 };
 
                 function register() {
-                    $http.post('https://weihnachten2017.vonaffenfels.de/ansprache/register', {uid: $scope.uid}).then((response) => {
+                    $http.post('https://weihnachten2017.vonaffenfels.de/ansprache/register', {uid: $scope.uid}).then(function(response){
                         console.log(response);
                         if(response.data.queued){
                             $scope.queue = response.data.queued;
@@ -41,10 +43,10 @@
                 }
 
                 function keepalive() {
-                    $http.post('https://weihnachten2017.vonaffenfels.de/ansprache/keepalive', {uid: $scope.uid, time: $scope.time}).then((response) => {
+                    $http.post('https://weihnachten2017.vonaffenfels.de/ansprache/keepalive', {uid: $scope.uid, time: $scope.time}).then(function(response){
                         console.log(response);
                         if(response.data.text){
-                            for (let i = 0; i < response.data.text.length; i++) {
+                            for (var i = 0; i < response.data.text.length; i++) {
                                 $scope.text.push(response.data.text[i].text);
                             }
                         }
@@ -63,10 +65,18 @@
                 }
 
                 function write() {
-                    $http.post('https://weihnachten2017.vonaffenfels.de/ansprache/write', {uid: $scope.uid, time: Date.now(), text: $scope.input}).then((response) => {
+                    $http.post('https://weihnachten2017.vonaffenfels.de/ansprache/write', {uid: $scope.uid, time: Date.now(), text: $scope.input}).then(function(response){
                         console.log(response);
                     });
                 }
+
+                $scope.checkInput = function(){
+                    if(($scope.input.length < 30) && ($scope.input.match(/ /g) || []).length <= 3){
+                        $scope.inputValid = true;
+                        return;
+                    }
+                    $scope.inputValid = false;
+                };
 
                 angular.element(document).ready(function () {
                     register();
@@ -124,7 +134,7 @@
     </p>
     <span id="text-input">
         <p ng-if="queue > 0" id="block-text">Es {{queue>1?"schreiben":"schreibt"}} {{queue}} {{queue>1?"Personen":"Person"}} vor dir ...</p>
-        <input type="text" ng-model="input" ng-disabled="queue > 0">
+        <input type="text" ng-model="input" ng-change="checkInput()" ng-disabled="queue > 0">
         <button ng-click="send()" ng-disabled="queue > 0">Senden</button>
     </span>
 <script src="" type="text/javascript"></script>
