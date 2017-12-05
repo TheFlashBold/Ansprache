@@ -33,7 +33,7 @@
                 };
 
                 function register() {
-                    $http.post('https://weihnachten2017.vonaffenfels.de/ansprache/register', {uid: $scope.uid}).then(function(response){
+                    $http.post('http://localhost:13337/ansprache/register', {uid: $scope.uid}).then(function(response){
                         console.log(response);
                         if(response.data.queued){
                             $scope.queue = response.data.queued;
@@ -43,7 +43,7 @@
                 }
 
                 function keepalive() {
-                    $http.post('https://weihnachten2017.vonaffenfels.de/ansprache/keepalive', {uid: $scope.uid, time: $scope.time}).then(function(response){
+                    $http.post('http://localhost:13337/ansprache/keepalive', {uid: $scope.uid, time: $scope.time}).then(function(response){
                         console.log(response);
                         if(response.data.text){
                             for (var i = 0; i < response.data.text.length; i++) {
@@ -65,7 +65,7 @@
                 }
 
                 function write() {
-                    $http.post('https://weihnachten2017.vonaffenfels.de/ansprache/write', {uid: $scope.uid, time: Date.now(), text: $scope.input}).then(function(response){
+                    $http.post('http://localhost:13337/ansprache/write', {uid: $scope.uid, time: Date.now(), text: $scope.input}).then(function(response){
                         console.log(response);
                     });
                 }
