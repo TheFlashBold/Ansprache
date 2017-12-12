@@ -87,6 +87,10 @@
                     });
                 }
 
+                $scope.addWord = function (word) {
+                    $scope.input += " " + word;
+                };
+
                 $scope.hideMessage = function () {
                     $scope.hideMsg = true;
                 };
@@ -130,7 +134,7 @@
 <p id="text">{{text.join(" ")}}
 </p>
 <div ng-if="queue == 0" class="word-suggest">
-    <span class="suggest" ng-repeat="word in words track by $index" ng-class="{'has-word': checkWord('{{word}}')}">
+    <span class="suggest" ng-repeat="word in words track by $index" ng-class="{'has-word': checkWord('{{word}}')}" ng-click="addWord('{{word}}')">
         {{word}}
     </span>
 </div>
