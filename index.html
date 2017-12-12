@@ -121,7 +121,7 @@
 </head>
 <body ng-controller="ansprachenController">
 <div id="description" ng-if="!hideMsg">Bilde einen ganzen Satz mit den vorgegbenen Wörtern.<br>
-    <button ng-click="hideMessage()">OK</button>
+    <button ng-click="hideMessage()" style="float: unset !important;">OK</button>
 </div>
 <div id="blocking" ng-if="!inputValid && input.length > 0">Es muss ein vollständiger Satz sein und muss alle 3 Wörter
     beinhalten.
