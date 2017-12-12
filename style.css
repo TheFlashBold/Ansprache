@@ -48,7 +48,7 @@ p {
 }
 
 #has-word {
-    color: #00d6b2;
+    background-color: #00d6b2;
 }
 
 #blocking {
@@ -58,4 +58,27 @@ p {
     background-color: #b91313b8;
     width: 100%;
     padding: 10px 0px 10px 0px;
+}
+
+.word-suggest {
+    width: 100%;
+    float: none;
+    clear: both;
+    overflow: hidden;
+}
+
+.suggest {
+    width: 32%;
+    padding: 5px 20px;
+    min-width: 20px;
+    background: #f1f1f1;
+    float: left;
+    font-size: 18px;
+    border-radius: 15px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.suggest:not(:last-child) {
+    margin-right: 15px;
 }

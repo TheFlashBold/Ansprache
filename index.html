@@ -60,7 +60,7 @@
                         }
                         if (response.data.canWrite) {
                             console.log(response.data.queued);
-                            if(!$scope.newWords) {
+                            if (!$scope.newWords) {
                                 $scope.newWords = true;
                                 $scope.words = response.data.words || [];
                             }
@@ -114,12 +114,13 @@
 <img id="waldemar" src="assets/waldemar_spricht.svg">
 <p id="text">{{text.join(" ")}}
 </p>
+<div class="word-suggest">
+    <span class="suggest" ng-repeat="word in words track by $index"
+          ng-class="{'has-word': input.indexOf('{{word}}') !== -1}}">
+        {{word}}
+    </span>
+</div>
 <span id="text-input">
-    <div>
-        <span ng-repeat="word in words track by $index" ng-class="{'hasWord':}}">
-            {{word}}
-        </span>
-    </div>
     <p ng-if="queue > 0" id="block-text">
         Es {{queue>1?"schreiben":"schreibt"}} {{queue==1?"eine":queue}} {{queue>1?"Personen":"Person"}} vor dir ...
     </p>
