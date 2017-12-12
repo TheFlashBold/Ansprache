@@ -88,6 +88,9 @@
                 }
 
                 $scope.addWord = function (word) {
+                    if(word == undefined){
+                        return;
+                    }
                     $scope.input += " " + word + " ";
                 };
 
