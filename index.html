@@ -87,12 +87,16 @@
                     });
                 }
 
-                $scope.hideMessage = function() {
+                $scope.hideMessage = function () {
                     $scope.hideMsg = true;
                 };
 
                 $scope.checkInput = function () {
-                    if ($scope.input.indexOf($scope.words[0]) !== -1 && $scope.input.indexOf($scope.words[1]) !== -1 && $scope.input.indexOf($scope.words[2]) !== -1 && /\.$/g.test($scope.input)) {
+                    if ($scope.input.toLowerCase().indexOf($scope.words[0].toLowerCase()) !== -1 &&
+                        $scope.input.toLowerCase().indexOf($scope.words[1].toLowerCase()) !== -1 &&
+                        $scope.input.toLowerCase().indexOf($scope.words[2].toLowerCase()) !== -1 &&
+                        /\.$/g.test($scope.input)){
+
                         $scope.inputValid = true;
                         return;
                     }
@@ -116,7 +120,9 @@
     </script>
 </head>
 <body ng-controller="ansprachenController">
-<div id="description" ng-if="!hideMsg">Bilde einen ganzen Satz mit den vorgegbenen Wörtern.<br><button ng-click="hideMessage()">OK</button></div>
+<div id="description" ng-if="!hideMsg">Bilde einen ganzen Satz mit den vorgegbenen Wörtern.<br>
+    <button ng-click="hideMessage()">OK</button>
+</div>
 <div id="blocking" ng-if="!inputValid && input.length > 0">Es muss ein vollständiger Satz sein und muss alle 3 Wörter
     beinhalten.
 </div>
