@@ -132,8 +132,10 @@
     <p ng-if="queue > 0" id="block-text">
         Es {{queue>1?"schreiben":"schreibt"}} {{queue==1?"jemand":queue}} {{queue>1?"Personen":""}} vor dir ...
     </p>
+  <div class="form">
     <input type="text" ng-model="input" ng-change="checkInput()" ng-keyup="keyevent($event)" ng-disabled="queue > 0">
-    <button ng-click="send()" ng-disabled="(queue > 0) || !inputValid">Senden</button>
+      <button ng-click="send()" ng-disabled="(queue > 0) || !inputValid">Senden</button>
+  </div>
 </span>
 </body>
 </html>
