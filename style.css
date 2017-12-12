@@ -69,6 +69,7 @@ p {
     border-radius: 15px;
     text-align: center;
     box-sizing: border-box;
+    word-break: break-all;
 }
 
 .suggest:not(:last-child) {
