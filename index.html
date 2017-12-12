@@ -98,7 +98,7 @@
                 };
 
                 $scope.checkWord = function (word) {
-                    return $scope.text.indexOf(word) !== -1;
+                    return ($scope.input && $scope.input.toLowerCase().indexOf(word.toLowerCase()) !== -1);
                 };
 
                 angular.element(document).ready(function () {
@@ -114,9 +114,9 @@
 <img id="waldemar" src="assets/waldemar_spricht.svg">
 <p id="text">{{text.join(" ")}}
 </p>
-<div class="word-suggest">
+<div ng-if="queue == 0" class="word-suggest">
     <span class="suggest" ng-repeat="word in words track by $index"
-          ng-class="{'has-word': input.indexOf('{{word}}') !== -1}}">
+          ng-class="{'has-word': checkWord('{{word}}')}">
         {{word}}
     </span>
 </div>

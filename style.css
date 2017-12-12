@@ -47,8 +47,8 @@ p {
     margin: 10px;
 }
 
-#has-word {
-    background-color: #00d6b2;
+.has-word {
+    background-color: #00d6b2 !important;
 }
 
 #blocking {
@@ -65,6 +65,8 @@ p {
     float: none;
     clear: both;
     overflow: hidden;
+    position: fixed;
+    bottom: 55px;
 }
 
 .suggest {
