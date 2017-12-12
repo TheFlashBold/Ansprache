@@ -76,7 +76,6 @@
                 $scope.checkInput = function(){
                     if(($scope.input.length < 30) && ($scope.input.match(/ /g) || []).length < 3){
                         $scope.inputValid = true;
-                        console.log("valid");
                         return;
                     }
                     $scope.inputValid = false;
