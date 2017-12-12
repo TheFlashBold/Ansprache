@@ -142,9 +142,19 @@
         p {
             margin: 10px;
         }
+
+        #blocking {
+            position: fixed;
+            top: 50%;
+            text-align: center;
+            background-color: #b91313b8;
+            width: 100%;
+            padding: 10px 0px 10px 0px;
+        }
     </style>
 </head>
 <body ng-controller="ansprachenController">
+    <div id="blocking" ng-if="!inputValid && input.length > 0">Maximal 3 Wörter</div>
     <img id="waldemar" src="assets/waldemar_spricht.svg">
     <p id="text">{{text.join(" ")}}
     </p>
