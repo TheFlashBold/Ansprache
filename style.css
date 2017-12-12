@@ -8,6 +8,15 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+#description {
+    position: fixed;
+    top: 40%;
+    background-color: #8c8c8c;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+}
+
 #waldemar {
     width: 100%;
 }
@@ -61,12 +70,13 @@ p {
 }
 
 .word-suggest {
-    width: 100%;
+    width: 80%;
     float: none;
     clear: both;
     overflow: hidden;
     position: fixed;
     bottom: 55px;
+    left: 10px;
 }
 
 .suggest {
