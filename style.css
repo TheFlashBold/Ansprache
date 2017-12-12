@@ -70,7 +70,7 @@ p {
 }
 
 .word-suggest {
-    width: 80%;
+    width: calc(100% - 20px);
     float: none;
     clear: both;
     overflow: hidden;
