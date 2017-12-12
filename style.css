@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+#waldemar {
+    width: 100%;
+}
+
+#text {
+    margin-bottom: 75px;
+    margin-top: -4%;
+}
+
+#block-text {
+    position: fixed;
+    background-color: white;
+    bottom: 40px;
+    width: 100%;
+    margin-left: 0;
+    padding-left: 10px;
+    font-size: 13px;
+}
+
+#text-input {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    display: flex;
+}
+
+#text-input > input {
+    width: 80%;
+}
+
+#text-input > button {
+    width: 20%;
+}
+
+p {
+    margin: 10px;
+}
+
+#has-word {
+    color: #00d6b2;
+}
+
+#blocking {
+    position: fixed;
+    top: 50%;
+    text-align: center;
+    background-color: #b91313b8;
+    width: 100%;
+    padding: 10px 0px 10px 0px;
+}

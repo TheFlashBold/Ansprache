@@ -2,6 +2,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
     <script type="application/javascript">
         function uuidv4() {
@@ -83,7 +84,7 @@
                 }
 
                 $scope.checkInput = function () {
-                    if ($scope.input.indexOf($scope.words[0]) !== -1 && $scope.input.indexOf($scope.words[1]) !== -1 && $scope.input.indexOf($scope.words[2]) !== -1 && $scope.input.test(/\.$/g)) {
+                    if ($scope.input.indexOf($scope.words[0]) !== -1 && $scope.input.indexOf($scope.words[1]) !== -1 && $scope.input.indexOf($scope.words[2]) !== -1 && /\.$/g.test($scope.input)) {
                         $scope.inputValid = true;
                         return;
                     }
@@ -96,70 +97,15 @@
                     }
                 };
 
+                $scope.checkWord = function (word) {
+                    return $scope.text.indexOf(word) !== -1;
+                };
+
                 angular.element(document).ready(function () {
                     register();
                 });
             });
     </script>
-    <style type="text/css">
-        body {
-            margin: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        * {
-            font-family: 'Roboto', sans-serif;
-        }
-
-        #waldemar {
-            width: 100%;
-        }
-
-        #text {
-            margin-bottom: 75px;
-            margin-top: -4%;
-        }
-
-        #block-text {
-            position: fixed;
-            background-color: white;
-            bottom: 40px;
-            width: 100%;
-            margin-left: 0;
-            padding-left: 10px;
-            font-size: 13px;
-        }
-
-        #text-input {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            height: 50px;
-            display: flex;
-        }
-
-        #text-input > input {
-            width: 80%;
-        }
-
-        #text-input > button {
-            width: 20%;
-        }
-
-        p {
-            margin: 10px;
-        }
-
-        #blocking {
-            position: fixed;
-            top: 50%;
-            text-align: center;
-            background-color: #b91313b8;
-            width: 100%;
-            padding: 10px 0px 10px 0px;
-        }
-    </style>
 </head>
 <body ng-controller="ansprachenController">
 <div id="blocking" ng-if="!inputValid && input.length > 0">Es muss ein gültiger Satz sein und muss alle 3 Wörter
@@ -169,10 +115,15 @@
 <p id="text">{{text.join(" ")}}
 </p>
 <span id="text-input">
-    <div><span ng-repeat="word in words">{{word}}</span></div>
-    <p ng-if="queue > 0" id="block-text">Es {{queue>1?"schreiben":"schreibt"}} {{queue}} {{queue>1?"Personen":"Person"}} vor dir ...</p>
-    <input type="text" ng-model="input" ng-change="checkInput()" ng-keyup="keyevent($event)"
-           ng-disabled="queue > 0">
+    <div>
+        <span ng-repeat="word in words track by $index" ng-class="{'hasWord':}}">
+            {{word}}
+        </span>
+    </div>
+    <p ng-if="queue > 0" id="block-text">
+        Es {{queue>1?"schreiben":"schreibt"}} {{queue==1?"eine":queue}} {{queue>1?"Personen":"Person"}} vor dir ...
+    </p>
+    <input type="text" ng-model="input" ng-change="checkInput()" ng-keyup="keyevent($event)" ng-disabled="queue > 0">
     <button ng-click="send()" ng-disabled="(queue > 0) || !inputValid">Senden</button>
 </span>
 </body>
