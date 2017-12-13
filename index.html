@@ -104,7 +104,8 @@
                     if ($scope.input.toLowerCase().indexOf($scope.words[0].toLowerCase()) !== -1 &&
                         $scope.input.toLowerCase().indexOf($scope.words[1].toLowerCase()) !== -1 &&
                         $scope.input.toLowerCase().indexOf($scope.words[2].toLowerCase()) !== -1 &&
-                        /\.$/g.test($scope.input)){
+                        /\.$/g.test($scope.input) &&
+                        $scope.input.split('.').length === 2){
 
                         $scope.inputValid = true;
                         return;
