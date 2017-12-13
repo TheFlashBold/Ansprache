@@ -15,7 +15,7 @@
         var url = "https://weihnachten2017.vonaffenfels.de";
 
         angular.module('ansprache', [])
-            .controller('ansprachenController', function ($scope, $http) {
+            .controller('ansprachenController', function ($scope, $http, $window) {
                 $scope.uid = uuidv4();
                 $scope.time = 0;
                 $scope.queue = -1;
@@ -92,6 +92,7 @@
                         return;
                     }
                     $scope.input += " " + word + " ";
+                    $window.document.getElementById('input-box').focus();
                 };
 
                 $scope.hideMessage = function () {
@@ -146,7 +147,7 @@
         Es {{queue>1?"schreiben":"schreibt"}} {{queue==1?"jemand":queue}} {{queue>1?"Personen":""}} vor dir ...
     </p>
   <div class="form">
-    <input type="textarea" ng-model="input" ng-change="checkInput()" ng-keyup="keyevent($event)" ng-disabled="queue > 0">
+    <input id="input-box" type="textarea" ng-model="input" ng-change="checkInput()" ng-keyup="keyevent($event)" ng-disabled="queue > 0">
       <button ng-click="send()" ng-disabled="(queue > 0) || !inputValid">Senden</button>
   </div>
 </span>
