@@ -88,10 +88,11 @@
                 }
 
                 $scope.addWord = function (word) {
-                    if(word == undefined){
-                        return;
+                    if($scope.input){
+                        $scope.input += " " + word + " ";
+                    } else {
+                        $scope.input = word + " ";
                     }
-                    $scope.input += " " + word + " ";
                     $window.document.getElementById('input-box').focus();
                 };
 
